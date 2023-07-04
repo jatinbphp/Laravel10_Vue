@@ -5,7 +5,7 @@
     <div  v-for="(error, key) in errors" :key="key" class="alert alert-danger" role="alert">
       {{ error[0] }}
     </div>
-    <div>
+    <div v-if="loggedIn">
         <table class="table">
             <thead>
               <tr>
@@ -33,6 +33,7 @@
             </tbody>
         </table>
     </div>
+    <div v-else> Please login to load products</div>
 </template>
 
 <script>
@@ -43,9 +44,14 @@ export default {
     return {
       products: [],
       errormessage : '',
+      loggedIn : User.loggedIn(),
       errors : [],
       config: { headers: { "Content-type": "application/json", Authorization: 'Bearer '+User.getToken() }},
     }
+  },
+  mounted() {
+    console.log("");
+    this.loggedIn =  User.loggedIn();
   },
   async created() {
     try {
