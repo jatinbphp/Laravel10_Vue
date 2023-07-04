@@ -25,9 +25,9 @@
 </template>
 
 <script>
-  import User from '../user.js';
-
+import User from '../user.js';
 import axios from 'axios';
+// let //THIS OBSERVABLE IS USED TO KNOW IS USER LOGGEDIN
 export default {
   data() {
     return {
@@ -49,14 +49,15 @@ export default {
   methods: {
     async submitForm() {
       try {
+        console.log(this.$root);
+
         this.errormessage = '';
         this.errors = [];
         const response =  await axios.post('/api/auth/login', this.user);
         User.login(response.data.token);
+       this.$root.checkLogged();
         this.$router.push('/');
-        setTimeout(function () {
-          window.location.reload();
-        }, 100);
+       
 
       } catch (error) {
         console.log(error);

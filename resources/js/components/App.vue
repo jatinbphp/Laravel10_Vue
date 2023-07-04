@@ -34,7 +34,7 @@
   <div class="card">
     <div class="card-body">
       <div class="container-fluid">
-        <router-view></router-view>
+        <router-view ></router-view>
       </div>
     </div>
   </div>
@@ -42,6 +42,7 @@
 </template>
 <script>
   import User from '../user.js';
+
 export default {
   name: 'App',
    data() {
@@ -51,10 +52,12 @@ export default {
     }
   },
     mounted() {
+
       console.log("mounteddd");
 
 },
   methods: {
+   
     logout() {
       User.logOut()
       /* you should call "checkLogged" method after logout or login or signup to check the state of "local-storage" each time */

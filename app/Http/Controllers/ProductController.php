@@ -93,7 +93,7 @@ class ProductController extends Controller
         } else {
 
             return response()->json(['error' => true,
-                'message' => 'Product deleted successfully'], Response::HTTP_INTERNAL_SERVER_ERROR);
+                'message' => 'Error: Product can not deleted'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }
